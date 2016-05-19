@@ -7,7 +7,7 @@ import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import {IHttpClient} from "ninjagoat";
 import {IEndpointConfig} from "ninjagoat";
-import * as Transport from "../../scripts/constants/Transport";
+import * as Transport from "../constants/Transport";
 
 @injectable()
 class PostCommandDispatcher extends CommandDispatcher {
@@ -19,7 +19,7 @@ class PostCommandDispatcher extends CommandDispatcher {
         super(dateRetriever, guidGenerator);
     }
 
-    canExecuteCommand(command:Object) {
+    canExecuteCommand(command:Object):boolean {
         return this.transport === Transport.HTTP_Post && !this.authentication;
     }
 
