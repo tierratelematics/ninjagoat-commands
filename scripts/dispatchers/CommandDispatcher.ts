@@ -39,7 +39,7 @@ abstract class CommandDispatcher implements ICommandDispatcher {
         this.type = Reflect.getMetadata("Type", command.constructor);
     }
 
-    abstract canExecuteCommand(command:Object);
+    abstract canExecuteCommand(command:Object):boolean;
 
     abstract executeCommand(envelope:CommandEnvelope):Rx.IPromise<CommandResponse>;
 

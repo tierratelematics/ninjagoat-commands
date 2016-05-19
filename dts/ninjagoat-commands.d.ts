@@ -54,7 +54,7 @@ declare module NinjagoatCommands {
 
         dispatch(command:Object, metadata?:Dictionary<any>):Rx.IPromise<CommandResponse>;
 
-        abstract canExecuteCommand(command:Object);
+        abstract canExecuteCommand(command:Object):boolean;
 
         abstract executeCommand(envelope:CommandEnvelope):Rx.IPromise<CommandResponse>;
 
