@@ -1,12 +1,11 @@
 import CommandDispatcher from "./CommandDispatcher";
 import CommandEnvelope from "../CommandEnvelope";
 import CommandResponse from "../CommandResponse";
-import {injectable, inject, named} from "inversify";
-import {RegistrationKeys} from "ninjagoat";
+import {injectable, inject} from "inversify";
 import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import {IHttpClient} from "ninjagoat";
-import {IEndpointConfig} from "ninjagoat";
+import {IBaseConfig} from "ninjagoat";
 import * as Transport from "../constants/Transport";
 
 @injectable()
@@ -15,7 +14,7 @@ class PostCommandDispatcher extends CommandDispatcher {
     constructor(@inject("IDateRetriever") dateRetriever:IDateRetriever,
                 @inject("IGUIDGenerator") guidGenerator:IGUIDGenerator,
                 @inject("IHttpClient") private httpClient:IHttpClient,
-                @inject("IEndpointConfig") @named(RegistrationKeys.Config_Base) private config:IEndpointConfig) {
+                @inject("IBaseConfig") private config:IBaseConfig) {
         super(dateRetriever, guidGenerator);
     }
 
