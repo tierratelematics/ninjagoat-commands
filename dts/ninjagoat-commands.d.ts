@@ -1,7 +1,7 @@
 /// <reference path="../typings/index.d.ts" />
 
 import {IModule} from "ninjagoat";
-import {IKernelModule} from "inversify";
+import {interfaces} from "inversify";
 import {IViewModelRegistry} from "ninjagoat";
 import {IServiceLocator} from "ninjagoat";
 import {Dictionary} from "ninjagoat";
@@ -12,7 +12,7 @@ declare module NinjagoatCommands {
 
     class CommandsModule implements IModule {
 
-        modules:IKernelModule;
+        modules:(kernel:interfaces.Kernel) => void;
 
         register(registry:IViewModelRegistry, serviceLocator?:IServiceLocator, overrides?:any):void;
     }

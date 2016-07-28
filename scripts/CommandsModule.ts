@@ -1,5 +1,5 @@
 import {IModule} from "ninjagoat";
-import {IKernel, IKernelModule} from "inversify";
+import {interfaces} from "inversify";
 import {IViewModelRegistry} from "ninjagoat";
 import {IServiceLocator} from "ninjagoat";
 import ICommandDispatcher from "./dispatchers/ICommandDispatcher";
@@ -11,7 +11,7 @@ import EmptyMetadataEnricher from "./enrichers/EmptyMetadataEnricher";
 
 class CommandsModule implements IModule {
 
-    modules:IKernelModule = (kernel:IKernel) => {
+    modules = (kernel:interfaces.Kernel) => {
         kernel.bind<ICommandDispatcher>("ICommandDispatcher").to(CommandDispatcherEnricher).inSingletonScope();
         kernel.bind<CommandDispatcher>("CommandDispatcher").to(PostCommandDispatcher).inSingletonScope().whenInjectedInto(CommandDispatcherEnricher);
         kernel.bind<IMetadataEnricher>("IMetadataEnricher").to(EmptyMetadataEnricher).inSingletonScope(); //Needed by inversify to resolve correctly the dependency graph

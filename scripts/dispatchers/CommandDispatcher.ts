@@ -4,7 +4,9 @@ import CommandEnvelope from "../CommandEnvelope";
 import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import {Dictionary} from "ninjagoat";
+import {injectable} from "inversify";
 
+@injectable()
 abstract class CommandDispatcher implements ICommandDispatcher {
 
     private nextDispatcher:ICommandDispatcher;
