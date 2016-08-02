@@ -7,6 +7,7 @@ import {IServiceLocator} from "ninjagoat";
 import {Dictionary} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import {IDateRetriever} from "ninjagoat";
+import * as Promise from "bluebird";
 
 declare module NinjagoatCommands {
 
@@ -41,7 +42,7 @@ declare module NinjagoatCommands {
     export var Transport:TransportStatic;
 
     export interface ICommandDispatcher {
-        dispatch(command:Object, metadata?:Dictionary<any>):Rx.IPromise<CommandResponse>;
+        dispatch(command:Object, metadata?:Dictionary<any>):Promise<CommandResponse>;
     }
 
     export interface CommandResponse {
@@ -52,11 +53,11 @@ declare module NinjagoatCommands {
 
         constructor(dateRetriever:IDateRetriever, guidGenerator:IGUIDGenerator);
 
-        dispatch(command:Object, metadata?:Dictionary<any>):Rx.IPromise<CommandResponse>;
+        dispatch(command:Object, metadata?:Dictionary<any>):Promise<CommandResponse>;
 
         abstract canExecuteCommand(command:Object):boolean;
 
-        abstract executeCommand(envelope:CommandEnvelope):Rx.IPromise<CommandResponse>;
+        abstract executeCommand(envelope:CommandEnvelope):Promise<CommandResponse>;
 
         setNext(dispatcher:ICommandDispatcher):void;
     }

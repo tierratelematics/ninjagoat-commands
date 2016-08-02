@@ -7,6 +7,7 @@ import {IGUIDGenerator} from "ninjagoat";
 import {IHttpClient} from "ninjagoat";
 import {IBaseConfig} from "ninjagoat";
 import * as Transport from "../constants/Transport";
+import * as Promise from "bluebird";
 
 @injectable()
 class PostCommandDispatcher extends CommandDispatcher {
@@ -22,8 +23,8 @@ class PostCommandDispatcher extends CommandDispatcher {
         return this.transport === Transport.HTTP_Post && !this.authentication;
     }
 
-    executeCommand(envelope:CommandEnvelope):Rx.IPromise<CommandResponse> {
-        return this.httpClient.post(this.config.endpoint + this.endpoint, envelope).toPromise();
+    executeCommand(envelope:CommandEnvelope):Promise<CommandResponse> {
+        return <Promise<CommandResponse>>this.httpClient.post(this.config.endpoint + this.endpoint, envelope).toPromise();
     }
 
 }

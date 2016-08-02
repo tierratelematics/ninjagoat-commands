@@ -4,6 +4,7 @@ import CommandDispatcher from "../../scripts/dispatchers/CommandDispatcher";
 import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import CommandResponse from "../../scripts/CommandResponse";
+import * as Promise from "bluebird";
 
 class MockAuthCommandDispatcher extends CommandDispatcher {
 
@@ -15,7 +16,7 @@ class MockAuthCommandDispatcher extends CommandDispatcher {
         return this.authentication === Authentication.Basic;
     }
 
-    executeCommand(envelope:CommandEnvelope):Rx.IPromise<CommandResponse> {
+    executeCommand(envelope:CommandEnvelope):Promise<CommandResponse> {
         return null;
     }
 

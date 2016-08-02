@@ -5,6 +5,7 @@ import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import {Dictionary} from "ninjagoat";
 import {injectable} from "inversify";
+import * as Promise from "bluebird";
 
 @injectable()
 abstract class CommandDispatcher implements ICommandDispatcher {
@@ -19,7 +20,7 @@ abstract class CommandDispatcher implements ICommandDispatcher {
 
     }
 
-    dispatch(command:Object, metadata?:Dictionary<any>):Rx.IPromise<CommandResponse> {
+    dispatch(command:Object, metadata?:Dictionary<any>):Promise<CommandResponse> {
         this.extractCommandMetadata(command);
         if (!this.type)
             throw new Error("Missing type info from command");
@@ -43,7 +44,7 @@ abstract class CommandDispatcher implements ICommandDispatcher {
 
     abstract canExecuteCommand(command:Object):boolean;
 
-    abstract executeCommand(envelope:CommandEnvelope):Rx.IPromise<CommandResponse>;
+    abstract executeCommand(envelope:CommandEnvelope):Promise<CommandResponse>;
 
     setNext(dispatcher:ICommandDispatcher):void {
         this.nextDispatcher = dispatcher;

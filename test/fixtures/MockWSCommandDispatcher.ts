@@ -4,6 +4,7 @@ import {IDateRetriever} from "ninjagoat";
 import CommandResponse from "../../scripts/CommandResponse";
 import CommandEnvelope from "../../scripts/CommandEnvelope";
 import {IGUIDGenerator} from "ninjagoat";
+import * as Promise from "bluebird";
 
 class MockWSCommandDispatcher extends CommandDispatcher {
 
@@ -15,7 +16,7 @@ class MockWSCommandDispatcher extends CommandDispatcher {
         return this.transport === Transport.WebSocket;
     }
 
-    executeCommand(command:CommandEnvelope):Rx.IPromise<CommandResponse> {
+    executeCommand(command:CommandEnvelope):Promise<CommandResponse> {
         return null;
     }
 
