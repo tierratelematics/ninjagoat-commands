@@ -4,6 +4,7 @@ import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import CommandEnvelope from "../../scripts/CommandEnvelope";
 import CommandResponse from "../../scripts/CommandResponse";
+import * as Promise from "bluebird";
 
 class MockPostCommandDispatcher extends CommandDispatcher {
 
@@ -15,7 +16,7 @@ class MockPostCommandDispatcher extends CommandDispatcher {
         return this.transport === Transport.HTTP_Post;
     }
 
-    executeCommand(envelope:CommandEnvelope):Rx.IPromise<CommandResponse> {
+    executeCommand(envelope:CommandEnvelope):Promise<CommandResponse> {
         return null;
     }
 
