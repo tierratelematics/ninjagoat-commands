@@ -50,6 +50,10 @@ declare module NinjagoatCommands {
     }
 
     export abstract class CommandDispatcher implements ICommandDispatcher {
+        protected transport:string;
+        protected endpoint:string;
+        protected authentication:string;
+        protected type:string;
 
         constructor(dateRetriever:IDateRetriever, guidGenerator:IGUIDGenerator);
 
