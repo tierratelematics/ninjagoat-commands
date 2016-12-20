@@ -1,16 +1,12 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "module": "commonjs"
-    },
-    "exclude": [
-        "node_modules",
-        "test",
-        "dts"
-    ],
-    "files": [
-        "typings/index.d.ts"
-    ]
+  "compilerOptions": {
+    "target": "es5",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "types": ["mocha", "reflect-metadata", "node"]
+  },
+  "include": [
+    "node_modules/rx/ts/rx.all.d.ts"
+  ]
 }
