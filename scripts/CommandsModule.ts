@@ -11,10 +11,10 @@ import EmptyMetadataEnricher from "./enrichers/EmptyMetadataEnricher";
 
 class CommandsModule implements IModule {
 
-    modules = (kernel:interfaces.Kernel) => {
-        kernel.bind<ICommandDispatcher>("ICommandDispatcher").to(CommandDispatcherEnricher).inSingletonScope();
-        kernel.bind<CommandDispatcher>("CommandDispatcher").to(PostCommandDispatcher).inSingletonScope().whenInjectedInto(CommandDispatcherEnricher);
-        kernel.bind<IMetadataEnricher>("IMetadataEnricher").to(EmptyMetadataEnricher).inSingletonScope(); //Needed by inversify to resolve correctly the dependency graph
+    modules = (container:interfaces.Container) => {
+        container.bind<ICommandDispatcher>("ICommandDispatcher").to(CommandDispatcherEnricher).inSingletonScope();
+        container.bind<CommandDispatcher>("CommandDispatcher").to(PostCommandDispatcher).inSingletonScope().whenInjectedInto(CommandDispatcherEnricher);
+        container.bind<IMetadataEnricher>("IMetadataEnricher").to(EmptyMetadataEnricher).inSingletonScope(); //Needed by inversify to resolve correctly the dependency graph
     };
 
     register(registry:IViewModelRegistry, serviceLocator?:IServiceLocator, overrides?:any):void {
