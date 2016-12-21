@@ -7,7 +7,7 @@ import {IGUIDGenerator} from "ninjagoat";
 import {IDateRetriever} from "ninjagoat";
 import * as Promise from "bluebird";
 
-class CommandsModule implements IModule {
+export class CommandsModule implements IModule {
 
     modules: (container: interfaces.Container) => void;
 
@@ -62,7 +62,7 @@ export abstract class CommandDispatcher implements ICommandDispatcher {
     setNext(dispatcher: ICommandDispatcher): void;
 }
 
-class CommandEnvelope {
+declare class CommandEnvelope {
     id: string;
     type: string;
     createdTimestamp: string;
