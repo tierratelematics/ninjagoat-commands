@@ -1,11 +1,7 @@
 import "reflect-metadata";
-import "bluebird";
 import expect = require("expect.js");
 import Rx = require("rx");
 import sinon = require("sinon");
-import SinonSandboxStatic = Sinon.SinonSandboxStatic;
-import SinonSandbox = Sinon.SinonSandbox;
-import SinonSpy = Sinon.SinonSpy;
 import ICommandDispatcher from "../scripts/dispatchers/ICommandDispatcher";
 import MockMetadataEnricher from "./fixtures/MockMetadataEnricher";
 import MockDateEnricher from "./fixtures/MockDateEnricher";
@@ -19,7 +15,7 @@ describe("Command dispatcher enricher, given a list of enrichers", () => {
 
     let subject:ICommandDispatcher;
     let commandDispatcher:ICommandDispatcher;
-    let dispatchSpy:SinonSpy;
+    let dispatchSpy:sinon.SinonSpy;
 
     beforeEach(() => {
         commandDispatcher = new MockAuthCommandDispatcher(new MockDateRetriever(), new MockGuidGenerator());

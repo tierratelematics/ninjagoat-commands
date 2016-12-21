@@ -1,4 +1,3 @@
-/// <reference path="../typings/index.d.ts" />
 import CommandsModule from "./CommandsModule";
 import * as Transport from "./constants/Transport";
 import * as Authentication from "./constants/Authentication";

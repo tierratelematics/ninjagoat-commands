@@ -1,11 +1,7 @@
 import "reflect-metadata";
-import "bluebird";
 import expect = require("expect.js");
 import Rx = require("rx");
 import sinon = require("sinon");
-import SinonSandboxStatic = Sinon.SinonSandboxStatic;
-import SinonSandbox = Sinon.SinonSandbox;
-import SinonSpy = Sinon.SinonSpy;
 import MockDateRetriever from "./fixtures/MockDateRetriever";
 import MockGuidGenerator from "./fixtures/MockGuidGenerator";
 import MockWSCommandDispatcher from "./fixtures/MockWSCommandDispatcher";
@@ -17,13 +13,13 @@ import CommandEnvelope from "../scripts/CommandEnvelope";
 
 describe("Command dispatcher, given a command", () => {
 
-    let sandbox:SinonSandbox;
+    let sandbox:sinon.SinonSandbox;
     let subject:CommandDispatcher;
     let commandDispatcherWS:CommandDispatcher;
     let commandDispatcherAuth:CommandDispatcher;
-    let subjectSpy:SinonSpy;
-    let commandDispatcherWSSpy:SinonSpy;
-    let commandDispatcherAuthSpy:SinonSpy;
+    let subjectSpy:sinon.SinonSpy;
+    let commandDispatcherWSSpy:sinon.SinonSpy;
+    let commandDispatcherAuthSpy:sinon.SinonSpy;
 
     beforeEach(() => {
         let dateRetriever = new MockDateRetriever(),
