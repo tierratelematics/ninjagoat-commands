@@ -1,10 +1,7 @@
 import "reflect-metadata";
-import "bluebird";
 import expect = require("expect.js");
 import Rx = require("rx");
 import sinon = require("sinon");
-import SinonSandbox = Sinon.SinonSandbox;
-import SinonStub = Sinon.SinonStub;
 import {IHttpClient} from "ninjagoat";
 import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
@@ -19,7 +16,7 @@ describe("PostCommandDispatcher, given a command", () => {
 
     let subject:PostCommandDispatcher,
         httpClient:IHttpClient,
-        postStub:SinonStub,
+        postStub:sinon.SinonStub,
         dateRetriever:IDateRetriever,
         guidGenerator:IGUIDGenerator;
 
