@@ -62,6 +62,10 @@ export abstract class CommandDispatcher implements ICommandDispatcher {
     setNext(dispatcher: ICommandDispatcher): void;
 }
 
+export class CommandDispatcherEnricher implements ICommandDispatcher{
+    dispatch(command: Object, metadata?: Dictionary<any>): Promise<CommandResponse>;
+}
+
 declare class CommandEnvelope {
     id: string;
     type: string;
