@@ -4,7 +4,6 @@ import IMetadataEnricher from "../enrichers/IMetadataEnricher";
 import * as _ from "lodash";
 import {injectable, inject, multiInject} from "inversify";
 import {Dictionary} from "ninjagoat";
-import * as Promise from "bluebird";
 
 @injectable()
 class CommandDispatcherEnricher implements ICommandDispatcher {
