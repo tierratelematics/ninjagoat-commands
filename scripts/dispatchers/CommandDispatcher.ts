@@ -5,7 +5,6 @@ import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import {Dictionary} from "ninjagoat";
 import {injectable} from "inversify";
-import * as Promise from "bluebird";
 
 @injectable()
 abstract class CommandDispatcher implements ICommandDispatcher {

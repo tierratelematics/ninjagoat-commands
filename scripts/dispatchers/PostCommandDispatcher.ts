@@ -7,7 +7,6 @@ import {IGUIDGenerator} from "ninjagoat";
 import {IHttpClient} from "ninjagoat";
 import {IBaseConfig} from "ninjagoat";
 import * as Transport from "../constants/Transport";
-import * as Promise from "bluebird";
 
 @injectable()
 class PostCommandDispatcher extends CommandDispatcher {

@@ -4,7 +4,6 @@ import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import CommandEnvelope from "../../scripts/CommandEnvelope";
 import CommandResponse from "../../scripts/CommandResponse";
-import * as Promise from "bluebird";
 
 class MockPostCommandDispatcher extends CommandDispatcher {
 

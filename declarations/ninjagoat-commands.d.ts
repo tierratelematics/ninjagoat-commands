@@ -5,7 +5,6 @@ import {IServiceLocator} from "ninjagoat";
 import {Dictionary} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import {IDateRetriever} from "ninjagoat";
-import * as Promise from "bluebird";
 
 export class CommandsModule implements IModule {
 
