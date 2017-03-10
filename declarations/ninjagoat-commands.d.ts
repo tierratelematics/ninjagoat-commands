@@ -78,3 +78,7 @@ declare class CommandEnvelope {
 export interface IMetadataEnricher {
     enrich(command?: Object, metadata?: Dictionary<any>): Dictionary<any>
 }
+
+export interface ICommandsConfig {
+    endpoint:string;
+}

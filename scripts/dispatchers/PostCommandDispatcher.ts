@@ -5,8 +5,8 @@ import {injectable, inject} from "inversify";
 import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import {IHttpClient} from "ninjagoat";
-import {IBaseConfig} from "ninjagoat";
 import * as Transport from "../constants/Transport";
+import ICommandsConfig from "../ICommandsConfig";
 
 @injectable()
 class PostCommandDispatcher extends CommandDispatcher {
@@ -14,7 +14,7 @@ class PostCommandDispatcher extends CommandDispatcher {
     constructor(@inject("IDateRetriever") dateRetriever:IDateRetriever,
                 @inject("IGUIDGenerator") guidGenerator:IGUIDGenerator,
                 @inject("IHttpClient") private httpClient:IHttpClient,
-                @inject("IBaseConfig") private config:IBaseConfig) {
+                @inject("ICommandsConfig") private config:ICommandsConfig) {
         super(dateRetriever, guidGenerator);
     }
 
