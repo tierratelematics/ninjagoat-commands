@@ -1,4 +1,51 @@
-#Ninjagoat-commands
+# Ninjagoat-commands
+
+Ninjagoat bindings for sending commands to a CQRS backend.
+
+## Installation
+
+`
+$ npm install ninjagoat-commands
+`
+
+Register the module with ninjagoat
+
+```typescript
+//bootstrapper.ts
+import {CommandsModule} from "ninjagoat-commands";
+
+application.register(new CommandsModule())
+```
+
+## Usage
+
+```typescript
+import {ICommandDispatcher, CommandDecorators as decorators} from "ninjagoat-commands";
+let commandDispatcher:ICommandDispatcher; //Inject it somewhere
+
+//Define a command
+@decorators.Endpoint("/commands")
+@decorators.Type("CreateResource")
+class Command {
+    id: string;
+    
+    constructor(id:string) {
+        this.id = id;
+    }
+}
+
+await commandDispatcher.dispatch(new Command("test-id"));
+console.log('Command sent!');
+```
+
+### Customize command dispatchers
+
+You can write a custom command dispatcher (just extend the abstract CommandDispatcher) and set it as the next executor.
+
+```typescript
+let commandDispatcher = serviceLocator.get<ICommandDispatcher>("ICommandDispatcher");
+commandDispatcher.setNext(myCommandDispatcher);
+```
 
 ## License
 
