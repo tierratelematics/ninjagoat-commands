@@ -13,6 +13,5 @@ deploy:
   api_key:
     secure: JQiVqU7rzd8g7j/PO4U9ejcQ3nM0460dG4/I27Fos36VvHtajPrsxfqoSNRxWM8Su/4h9UWYiU+DuHTT52o6qnhrv7a0BKCrwEb+Ie5OHb1IikLJ+GAQ+iiN/s0iC8jiNFTCJ2q99N9bi65Xy5npgSrAOPr+Cv//9eLKSZB3Q925GHihtBtegvprhd3M/o4hlT+jpdv15nEA2EzEuQS/IhkbGKFQxhB/nHuW887xg9EEwXtfnWG13TX46aYJDcvMF1e1YHblqN9svH+DyJbbeXbLUY+fLHF0yl8jkQ/83KWk5pHLBY+x9H2qarma8z13f1z/YMb/7b6ePzEPeNGrVwHWM6Dj5a1XUau2M7PD/DpqRsHbNpEu9+RgYUZNmloto4tilW6mlQ+Yq6yc2X2LBmugcDi15Cgx3IdJQmvtqRCSBPYSsqpQP6p6G48W7hmlxGZ3U05NojQkF0mARA9OztASAQx+ejTHUZvMy0TzIg8jzlMd6nG13GdWmCv4rnMb4dtllRpPBIve1GuhP1Az6U+P/GnYJFitSVsMrtZFAemQ8TnNmerSK1lAJBYTzjtA30IMuW54Sz6p2WWKlrb+rgYEJk4wGrpTHX29U/6vOHZBPn7m6ymdwm1TtADp1kvXTBwqAmiYHeq0j34j5uzESpdR9fN0Wl96jhYVyFepmVQ=
   on:
-    branch: master
     repo: tierratelematics/ninjagoat-commands
-    tags: false
+    tags: true
