@@ -1,3 +1,7 @@
+# 2.0.2
+
+Export some dispatchers
+
 # 2.0.1
 
 Fix lodash types
