@@ -1,4 +1,4 @@
-import {IModule} from "ninjagoat";
+import {IModule, IHttpClient} from "ninjagoat";
 import {interfaces} from "inversify";
 import {IViewModelRegistry} from "ninjagoat";
 import {IServiceLocator} from "ninjagoat";
@@ -61,8 +61,18 @@ export abstract class CommandDispatcher implements ICommandDispatcher {
     setNext(dispatcher: ICommandDispatcher): void;
 }
 
-export class CommandDispatcherEnricher implements ICommandDispatcher{
+export class CommandDispatcherEnricher implements ICommandDispatcher {
     dispatch(command: Object, metadata?: Dictionary<any>): Promise<CommandResponse>;
+}
+
+export class PostCommandDispatcher extends CommandDispatcher {
+
+    constructor(dateRetriever: IDateRetriever, guidGenerator: IGUIDGenerator, httpClient: IHttpClient, config: ICommandsConfig);
+
+    canExecuteCommand(command: Object): boolean;
+
+    executeCommand(envelope: CommandEnvelope): Promise<CommandResponse>;
+
 }
 
 declare class CommandEnvelope {
@@ -80,5 +90,5 @@ export interface IMetadataEnricher {
 }
 
 export interface ICommandsConfig {
-    endpoint:string;
+    endpoint: string;
 }
