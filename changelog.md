@@ -1,3 +1,7 @@
+# 2.0.3
+
+Fix export of CommandsModule
+
 # 2.0.2
 
 Export some dispatchers
