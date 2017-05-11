@@ -1,7 +1,6 @@
 import CommandDispatcher from "./CommandDispatcher";
 import CommandEnvelope from "../CommandEnvelope";
 import CommandResponse from "../CommandResponse";
-import IPayload from "../IPayload";
 import {injectable, inject} from "inversify";
 import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
@@ -19,7 +18,7 @@ class PostCommandDispatcher extends CommandDispatcher {
         super(dateRetriever, guidGenerator);
     }
 
-    canExecuteCommand(command:IPayload):boolean {
+    canExecuteCommand(command:object):boolean {
         return this.transport === Transport.HTTP_Post && !this.authentication;
     }
 

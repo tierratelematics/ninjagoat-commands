@@ -1,7 +1,6 @@
 import ICommandDispatcher from "./ICommandDispatcher";
 import CommandResponse from "../CommandResponse";
 import IMetadataEnricher from "../enrichers/IMetadataEnricher";
-import IPayload from "../IPayload";
 import * as _ from "lodash";
 import { injectable, inject, multiInject } from "inversify";
 import { Dictionary } from "ninjagoat";
@@ -14,7 +13,7 @@ class CommandDispatcherEnricher implements ICommandDispatcher {
 
     }
 
-    dispatch(command: IPayload): Promise<CommandResponse> {
+    dispatch(command: object): Promise<CommandResponse> {
         let headers: Dictionary<any> = _.reduce(this.enrichers, (result, enricher) => {
             result = enricher.enrich(command, result);
             return result;
