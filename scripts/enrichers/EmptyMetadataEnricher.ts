@@ -5,8 +5,8 @@ import {Dictionary} from "ninjagoat";
 @injectable()
 class EmptyMetadataEnricher implements IMetadataEnricher {
 
-    enrich(command?:Object, metadata?:Dictionary<any>):Dictionary<any> {
-        return metadata;
+    enrich(command?:object, headers?:Dictionary<any>):Dictionary<any> {
+        return headers;
     }
 
 }

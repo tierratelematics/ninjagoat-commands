@@ -19,29 +19,30 @@ abstract class CommandDispatcher implements ICommandDispatcher {
 
     }
 
-    dispatch(command:Object, metadata?:Dictionary<any>):Promise<CommandResponse> {
+    dispatch(command:object, headers?:Dictionary<any>):Promise<CommandResponse> {
         this.extractCommandMetadata(command);
         if (!this.type)
             throw new Error("Missing type info from command");
         if ((!this.transport && !this.endpoint && !this.authentication) || this.canExecuteCommand(command)) {
-            let envelope = CommandEnvelope.of(command, metadata);
-            envelope.type = this.type;
-            envelope.id = this.guidGenerator.generate();
-            envelope.createdTimestamp = this.dateRetriever.getDate();
+            let anyCommand: any = command;
+            anyCommand.$manifest = this.type;
+            let envelope = CommandEnvelope.of(anyCommand, headers);
+            envelope.headers["CausationId"] = this.guidGenerator.generate();
+            envelope.headers["CreatedTimestamp"] = this.dateRetriever.getDate();
             return this.executeCommand(envelope);
         } else if (this.nextDispatcher) {
-            return this.nextDispatcher.dispatch(command, metadata);
+            return this.nextDispatcher.dispatch(command, headers);
         }
     }
 
-    private extractCommandMetadata(command:Object):void {
+    private extractCommandMetadata(command:object):void {
         this.transport = Reflect.getMetadata("Transport", command.constructor);
         this.endpoint = Reflect.getMetadata("Endpoint", command.constructor);
         this.authentication = Reflect.getMetadata("Authentication", command.constructor);
         this.type = Reflect.getMetadata("Type", command.constructor);
     }
 
-    abstract canExecuteCommand(command:Object):boolean;
+    abstract canExecuteCommand(command:object):boolean;
 
     abstract executeCommand(envelope:CommandEnvelope):Promise<CommandResponse>;
 

@@ -16,14 +16,14 @@ describe("Metadata enricher, given a list of enrichers", () => {
 
     context("and no metadata where already added", () => {
         it("should enrich the command with metadata", () => {
-            expect(subject.enrich()).to.eql({"guid": "fixed-id"});
+            expect(subject.enrich()).to.eql({"CausationId": "fixed-id"});
         });
     });
 
     context("and some metadata where already added", () => {
         it("should merge the existing metadata with the new ones", () => {
             expect(subject.enrich(new DefaultCommand(), {"user": "existing-metadata"})).to.eql({
-                "guid": "fixed-id",
+                "CausationId": "fixed-id",
                 "user": "existing-metadata"
             });
         });

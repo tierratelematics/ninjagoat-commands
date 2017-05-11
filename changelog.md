@@ -1,3 +1,7 @@
+# 3.0.0
+
+Add new command's envelope format (see [this PR](https://github.com/tierratelematics/ninjagoat-commands/pull/1))
+
 # 2.0.3
 
 Fix export of CommandsModule
