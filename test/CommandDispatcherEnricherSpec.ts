@@ -29,11 +29,11 @@ describe("Command dispatcher enricher, given a list of enrichers", () => {
 
     context("when a commands needs to be sent", () => {
         it("should append all the metadata provided by the enriches to that command", () => {
-            subject.dispatch(new MockCommands.DefaultCommand());
-            expect(dispatchSpy.calledWith(new MockCommands.DefaultCommand(), {
-                "guid": "fixed-id",
-                "date": "2016-05-16T09:52:18Z"
-            })).to.be(true);
+            let command = new MockCommands.DefaultCommand();
+            subject.dispatch(command);
+ //           command.$manifest = "DefaultCommand"; // needed because the dispatcher sets the manifest
+            expect(dispatchSpy.calledWith(command, {"CausationId": "42",
+             "CreatedTimestamp": "2016-05-16T09:52:18Z"})).to.be(true);
         });
     });
 });

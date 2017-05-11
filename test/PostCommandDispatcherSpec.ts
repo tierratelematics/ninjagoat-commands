@@ -11,6 +11,7 @@ import {EndpointCommand} from "./fixtures/MockCommands";
 import CommandEnvelope from "../scripts/CommandEnvelope";
 import PostCommandDispatcher from "../scripts/dispatchers/PostCommandDispatcher";
 import {HttpClient} from "ninjagoat";
+import {Dictionary} from "ninjagoat";
 
 describe("PostCommandDispatcher, given a command", () => {
 
@@ -36,9 +37,10 @@ describe("PostCommandDispatcher, given a command", () => {
         it("should send it using an http client", () => {
             subject.dispatch(new EndpointCommand(), {});
             let envelope = CommandEnvelope.of(new EndpointCommand(), {});
-            envelope.type = "EndpointCommand";
-            envelope.createdTimestamp = "2016-05-16T09:52:18Z";
-            envelope.id = "42";
+            let anyCommand: any = envelope.payload;
+            anyCommand.$manifest = "EndpointCommand";
+            envelope.headers["CreatedTimestamp"] = "2016-05-16T09:52:18Z";
+            envelope.headers["CausationId"] = "42";
             expect(postStub.calledWith("/foo", envelope)).to.be(true);
         });
 

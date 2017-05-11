@@ -18,7 +18,7 @@ class PostCommandDispatcher extends CommandDispatcher {
         super(dateRetriever, guidGenerator);
     }
 
-    canExecuteCommand(command:Object):boolean {
+    canExecuteCommand(command:object):boolean {
         return this.transport === Transport.HTTP_Post && !this.authentication;
     }
 

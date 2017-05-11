@@ -5,7 +5,7 @@ import {Dictionary} from "ninjagoat";
 class MockMetadataEnricher implements IMetadataEnricher {
 
     enrich(command?:Object, metadata?:Dictionary<any>):Dictionary<any> {
-        return _.merge({}, metadata, {"guid": "fixed-id"});
+        return _.merge({}, metadata, {"CausationId": "fixed-id"});
     }
 
 }

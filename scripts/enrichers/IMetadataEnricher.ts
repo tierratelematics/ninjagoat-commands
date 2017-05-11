@@ -1,7 +1,7 @@
 import {Dictionary} from "ninjagoat";
 
 interface IMetadataEnricher {
-    enrich(command?:Object, metadata?:Dictionary<any>):Dictionary<any>
+    enrich(command?:object, headers?:Dictionary<any>):Dictionary<any>
 }
 
 export default IMetadataEnricher

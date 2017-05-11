@@ -1,8 +1,8 @@
 import CommandResponse from "../CommandResponse";
-import {Dictionary} from "ninjagoat";
+import { Dictionary } from "ninjagoat";
 
 interface ICommandDispatcher {
-    dispatch(command:Object, metadata?:Dictionary<any>):Promise<CommandResponse>;
+    dispatch(command: object, headers?: Dictionary<any>): Promise<CommandResponse>;
 }
 
-export default ICommandDispatcher
+export default ICommandDispatcher;
