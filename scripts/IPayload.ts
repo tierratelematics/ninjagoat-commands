@@ -1,5 +1,5 @@
 interface IPayload {
-    manifest: string;
+    $manifest: string;
 }
 
 export default IPayload;
