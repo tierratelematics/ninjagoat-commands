@@ -35,14 +35,14 @@ abstract class CommandDispatcher implements ICommandDispatcher {
         }
     }
 
-    private extractCommandMetadata(command:Object):void {
+    private extractCommandMetadata(command:object):void {
         this.transport = Reflect.getMetadata("Transport", command.constructor);
         this.endpoint = Reflect.getMetadata("Endpoint", command.constructor);
         this.authentication = Reflect.getMetadata("Authentication", command.constructor);
         this.type = Reflect.getMetadata("Type", command.constructor);
     }
 
-    abstract canExecuteCommand(command:Object):boolean;
+    abstract canExecuteCommand(command:object):boolean;
 
     abstract executeCommand(envelope:CommandEnvelope):Promise<CommandResponse>;
 
