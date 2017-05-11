@@ -20,14 +20,13 @@ application.register(new CommandsModule())
 ## Usage
 
 ```typescript
-import {ICommandDispatcher, IPayload, CommandDecorators as decorators} from "ninjagoat-commands";
+import {ICommandDispatcher, CommandDecorators as decorators} from "ninjagoat-commands";
 let commandDispatcher:ICommandDispatcher; //Inject it somewhere
 
 //Define a command
 @decorators.Endpoint("/commands")
 @decorators.Type("CreateResource")
-class Command implemets IPayload {
-    $manifest: string;
+class Command {
     id: string;
     
     constructor(id:string) {
