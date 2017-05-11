@@ -1,6 +1,7 @@
 import ICommandDispatcher from "./ICommandDispatcher";
 import CommandResponse from "../CommandResponse";
 import CommandEnvelope from "../CommandEnvelope";
+import IPayload from "../IPayload";
 import {IDateRetriever} from "ninjagoat";
 import {IGUIDGenerator} from "ninjagoat";
 import {Dictionary} from "ninjagoat";
@@ -19,18 +20,18 @@ abstract class CommandDispatcher implements ICommandDispatcher {
 
     }
 
-    dispatch(command:Object, metadata?:Dictionary<any>):Promise<CommandResponse> {
+    dispatch(command:IPayload, headers?:Dictionary<any>):Promise<CommandResponse> {
         this.extractCommandMetadata(command);
         if (!this.type)
             throw new Error("Missing type info from command");
         if ((!this.transport && !this.endpoint && !this.authentication) || this.canExecuteCommand(command)) {
-            let envelope = CommandEnvelope.of(command, metadata);
-            envelope.type = this.type;
-            envelope.id = this.guidGenerator.generate();
-            envelope.createdTimestamp = this.dateRetriever.getDate();
+            let envelope = CommandEnvelope.of(command, headers);
+            command.$manifest = this.type;
+            envelope.headers["CausationId"] = this.guidGenerator.generate();
+            envelope.headers["CreatedTimestamp"] = this.dateRetriever.getDate();
             return this.executeCommand(envelope);
         } else if (this.nextDispatcher) {
-            return this.nextDispatcher.dispatch(command, metadata);
+            return this.nextDispatcher.dispatch(command, headers);
         }
     }
 

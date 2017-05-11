@@ -1,7 +1,8 @@
 import {Dictionary} from "ninjagoat";
+import IPayload from "../IPayload";
 
 interface IMetadataEnricher {
-    enrich(command?:Object, metadata?:Dictionary<any>):Dictionary<any>
+    enrich(command?:IPayload, headers?:Dictionary<any>):Dictionary<any>
 }
 
 export default IMetadataEnricher

@@ -1,18 +1,16 @@
-import {Dictionary} from "ninjagoat";
+import { Dictionary } from "ninjagoat";
+import IPayload from "./IPayload";
 
 class CommandEnvelope {
-    id:string;
-    type:string;
-    createdTimestamp:string;
-    metadata:Dictionary<any>;
-    payload:Object;
+    headers: Dictionary<any>;
+    payload: IPayload;
 
-    static of(payload:Object, metadata?:Dictionary<any>) {
+    static of(payload: IPayload, headers?: Dictionary<any>) {
         let envelope = new CommandEnvelope();
         envelope.payload = payload;
-        envelope.metadata = metadata;
+        envelope.headers = headers || {};
         return envelope;
     }
 }
 
-export default CommandEnvelope
+export default CommandEnvelope;
