@@ -31,7 +31,7 @@ describe("Command dispatcher enricher, given a list of enrichers", () => {
         it("should append all the metadata provided by the enriches to that command", () => {
             let command = new MockCommands.DefaultCommand();
             subject.dispatch(command);
-            command.$manifest = "DefaultCommand"; // needed because the dispatcher sets the manifest
+ //           command.$manifest = "DefaultCommand"; // needed because the dispatcher sets the manifest
             expect(dispatchSpy.calledWith(command, {"CausationId": "42",
              "CreatedTimestamp": "2016-05-16T09:52:18Z"})).to.be(true);
         });

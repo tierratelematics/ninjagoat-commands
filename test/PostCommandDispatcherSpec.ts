@@ -37,7 +37,8 @@ describe("PostCommandDispatcher, given a command", () => {
         it("should send it using an http client", () => {
             subject.dispatch(new EndpointCommand(), {});
             let envelope = CommandEnvelope.of(new EndpointCommand(), {});
-            envelope.payload.$manifest = "EndpointCommand";
+            let anyCommand: any = envelope.payload;
+            anyCommand.$manifest = "EndpointCommand";
             envelope.headers["CreatedTimestamp"] = "2016-05-16T09:52:18Z";
             envelope.headers["CausationId"] = "42";
             expect(postStub.calledWith("/foo", envelope)).to.be(true);

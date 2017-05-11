@@ -77,7 +77,8 @@ describe("Command dispatcher, given a command", () => {
     context("before being executed", () => {
         it("should create an envelope with a timestamp, an unique id and the type of the command", () => {
             let envelope = CommandEnvelope.of(new MockCommands.DefaultCommand());
-            envelope.payload.$manifest = "DefaultCommand";
+            let anyCommand: any = envelope.payload;
+            anyCommand.$manifest = "DefaultCommand";
             envelope.headers["CreatedTimestamp"] = "2016-05-16T09:52:18Z";
             envelope.headers["CausationId"] = "42";
             subject.dispatch(new MockCommands.DefaultCommand());
