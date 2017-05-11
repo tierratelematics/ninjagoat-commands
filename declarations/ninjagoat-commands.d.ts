@@ -29,6 +29,10 @@ interface AuthenticationStatic {
 
 export var Authentication: AuthenticationStatic;
 
+export interface IPayload {
+    $manifest: string;
+}
+
 interface TransportStatic {
     HTTP_Post: string,
     WebSocket: string
@@ -37,7 +41,7 @@ interface TransportStatic {
 export var Transport: TransportStatic;
 
 export interface ICommandDispatcher {
-    dispatch(command: Object, metadata?: Dictionary<any>): Promise<CommandResponse>;
+    dispatch(command: IPayload, headers?: Dictionary<any>): Promise<CommandResponse>;
 }
 
 export interface CommandResponse {
@@ -52,9 +56,9 @@ export abstract class CommandDispatcher implements ICommandDispatcher {
 
     constructor(dateRetriever: IDateRetriever, guidGenerator: IGUIDGenerator);
 
-    dispatch(command: Object, metadata?: Dictionary<any>): Promise<CommandResponse>;
+    dispatch(command: IPayload, headers?: Dictionary<any>): Promise<CommandResponse>;
 
-    abstract canExecuteCommand(command: Object): boolean;
+    abstract canExecuteCommand(command: IPayload): boolean;
 
     abstract executeCommand(envelope: CommandEnvelope): Promise<CommandResponse>;
 
@@ -62,31 +66,28 @@ export abstract class CommandDispatcher implements ICommandDispatcher {
 }
 
 export class CommandDispatcherEnricher implements ICommandDispatcher {
-    dispatch(command: Object, metadata?: Dictionary<any>): Promise<CommandResponse>;
+    dispatch(command: IPayload, headers?: Dictionary<any>): Promise<CommandResponse>;
 }
 
 export class PostCommandDispatcher extends CommandDispatcher {
 
     constructor(dateRetriever: IDateRetriever, guidGenerator: IGUIDGenerator, httpClient: IHttpClient, config: ICommandsConfig);
 
-    canExecuteCommand(command: Object): boolean;
+    canExecuteCommand(command: IPayload): boolean;
 
     executeCommand(envelope: CommandEnvelope): Promise<CommandResponse>;
 
 }
 
 declare class CommandEnvelope {
-    id: string;
-    type: string;
-    createdTimestamp: string;
-    metadata: Dictionary<any>;
-    payload: Object;
+    headers: Dictionary<any>;
+    payload: IPayload;
 
-    static of(payload: Object, metadata?: Dictionary<any>);
+    static of(payload: IPayload, headers?: Dictionary<any>);
 }
 
 export interface IMetadataEnricher {
-    enrich(command?: Object, metadata?: Dictionary<any>): Dictionary<any>
+    enrich(command?: IPayload, headers?: Dictionary<any>): Dictionary<any>
 }
 
 export interface ICommandsConfig {
