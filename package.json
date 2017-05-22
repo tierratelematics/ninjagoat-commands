@@ -19,7 +19,7 @@
     "sinon": "~1.17.3"
   },
   "peerDependencies": {
-    "ninjagoat": "^1.0.0"
+    "ninjagoat": "^2.3.0"
   },
   "scripts": {
     "test": "smild test"
