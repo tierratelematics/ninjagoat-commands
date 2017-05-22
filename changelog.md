@@ -1,3 +1,7 @@
+# 3.1.0
+
+Use react as dependency
+
 # 3.0.0
 
 Add new command's envelope format (see [this PR](https://github.com/tierratelematics/ninjagoat-commands/pull/1))
