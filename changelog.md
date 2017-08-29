@@ -1,3 +1,7 @@
+# 3.1.1
+
+Move types into dev deps
+
 # 3.1.0
 
 Use react as dependency
