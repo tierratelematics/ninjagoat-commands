@@ -1,3 +1,7 @@
+# 3.2.0
+
+Bump inversify
+
 # 3.1.1
 
 Move types into dev deps
