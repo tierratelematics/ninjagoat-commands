@@ -3,7 +3,7 @@ import CommandEnvelope from "../CommandEnvelope";
 import CommandResponse from "../CommandResponse";
 import {injectable, inject} from "inversify";
 import {IDateRetriever} from "ninjagoat";
-import {IGUIDGenerator} from "ninjagoat";
+import {IGUIDGenerator, HttpResponse} from "ninjagoat";
 import {IHttpClient} from "ninjagoat";
 import * as Transport from "../constants/Transport";
 import ICommandsConfig from "../ICommandsConfig";
@@ -23,7 +23,7 @@ class PostCommandDispatcher extends CommandDispatcher {
     }
 
     executeCommand(envelope:CommandEnvelope):Promise<CommandResponse> {
-        return <Promise<CommandResponse>>this.httpClient.post(this.config.endpoint + this.endpoint, envelope).toPromise();
+        return this.httpClient.post(this.config.endpoint + this.endpoint, envelope).toPromise<Promise<HttpResponse>>(Promise);
     }
 
 }
