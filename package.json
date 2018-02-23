@@ -1,6 +1,6 @@
 {
   "name": "ninjagoat-commands",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "dependencies": {
     "inversify": "^4.3.0",
     "lodash": "~4.10.0",
@@ -24,6 +24,6 @@
   "scripts": {
     "test": "smild test"
   },
-  "main": "dist/ninjagoat-commands.js",
-  "typings": "declarations/ninjagoat-commands.d.ts"
+  "main": "dist",
+  "typings": "dist"
 }
