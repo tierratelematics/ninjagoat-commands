@@ -1,3 +1,7 @@
+# 4.0.0
+
+Update React to v16
+
 # 3.3.0
 
 Bump to ninjagoat 3.x
