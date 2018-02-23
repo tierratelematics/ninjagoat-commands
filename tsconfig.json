@@ -13,7 +13,8 @@
       "mocha",
       "reflect-metadata",
       "node"
-    ]
+    ],
+    "declaration": true
   },
   "include": [
     "node_modules/rx/ts/rx.all.d.ts"

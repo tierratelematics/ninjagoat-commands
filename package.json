@@ -24,6 +24,6 @@
   "scripts": {
     "test": "smild test"
   },
-  "main": "dist/ninjagoat-commands.js",
-  "typings": "declarations/ninjagoat-commands.d.ts"
+  "main": "dist",
+  "typings": "dist"
 }
