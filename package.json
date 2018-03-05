@@ -1,16 +1,16 @@
 {
   "name": "ninjagoat-commands",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "dependencies": {
     "inversify": "^4.3.0",
-    "lodash": "~4.10.0",
+    "lodash": "^4.17.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "reflect-metadata": "0.1.8",
     "rx": "~4.1.0"
   },
   "devDependencies": {
-    "@types/lodash": "~4.14.64",
+    "@types/lodash": "4.14.64",
     "@types/node": "~6.0.52",
     "@types/expect.js": "~0.3.29",
     "@types/mocha": "~2.2.33",
