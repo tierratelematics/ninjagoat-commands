@@ -1,3 +1,7 @@
+# 4.0.2
+
+Avoid duplicated lodash versions
+
 # 4.0.1
 
 Auto-generate declarations
