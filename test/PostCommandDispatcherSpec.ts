@@ -1,32 +1,28 @@
 import "reflect-metadata";
-import expect = require("expect.js");
-import Rx = require("rx");
-import sinon = require("sinon");
-import {IHttpClient} from "ninjagoat";
-import {IDateRetriever} from "ninjagoat";
-import {IGUIDGenerator} from "ninjagoat";
+import {HttpClient, IDateRetriever, IGUIDGenerator, IHttpClient} from "ninjagoat";
 import MockDateRetriever from "./fixtures/MockDateRetriever";
 import MockGuidGenerator from "./fixtures/MockGuidGenerator";
 import {EndpointCommand} from "./fixtures/MockCommands";
 import CommandEnvelope from "../scripts/CommandEnvelope";
 import PostCommandDispatcher from "../scripts/dispatchers/PostCommandDispatcher";
-import {HttpClient} from "ninjagoat";
-import {Dictionary} from "ninjagoat";
+import {of} from "rxjs";
+import expect = require("expect.js");
+import sinon = require("sinon");
 
 describe("PostCommandDispatcher, given a command", () => {
 
-    let subject:PostCommandDispatcher,
-        httpClient:IHttpClient,
-        postStub:sinon.SinonStub,
-        dateRetriever:IDateRetriever,
-        guidGenerator:IGUIDGenerator;
+    let subject: PostCommandDispatcher,
+        httpClient: IHttpClient,
+        postStub: sinon.SinonStub,
+        dateRetriever: IDateRetriever,
+        guidGenerator: IGUIDGenerator;
 
     beforeEach(() => {
         httpClient = new HttpClient();
         dateRetriever = new MockDateRetriever();
         guidGenerator = new MockGuidGenerator();
         subject = new PostCommandDispatcher(dateRetriever, guidGenerator, httpClient, {endpoint: ""});
-        postStub = sinon.stub(httpClient, "post", () => Rx.Observable.just({response: null}));
+        postStub = sinon.stub(httpClient, "post", () => of({response: null}));
     });
 
     afterEach(() => {

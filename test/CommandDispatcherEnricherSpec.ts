@@ -1,6 +1,5 @@
 import "reflect-metadata";
 import expect = require("expect.js");
-import Rx = require("rx");
 import sinon = require("sinon");
 import ICommandDispatcher from "../scripts/dispatchers/ICommandDispatcher";
 import MockMetadataEnricher from "./fixtures/MockMetadataEnricher";

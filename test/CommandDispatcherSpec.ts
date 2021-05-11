@@ -1,6 +1,5 @@
 import "reflect-metadata";
 import expect = require("expect.js");
-import Rx = require("rx");
 import sinon = require("sinon");
 import MockDateRetriever from "./fixtures/MockDateRetriever";
 import MockGuidGenerator from "./fixtures/MockGuidGenerator";

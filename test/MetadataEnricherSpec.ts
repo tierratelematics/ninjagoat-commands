@@ -1,7 +1,5 @@
 import "reflect-metadata";
 import expect = require("expect.js");
-import Rx = require("rx");
-import sinon = require("sinon");
 import IMetadataEnricher from "../scripts/enrichers/IMetadataEnricher";
 import {DefaultCommand} from "./fixtures/MockCommands";
 import MockMetadataEnricher from "./fixtures/MockMetadataEnricher";
