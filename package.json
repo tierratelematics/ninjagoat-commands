@@ -1,6 +1,6 @@
 {
   "name": "ninjagoat-commands",
-  "version": "4.0.2",
+  "version": "5.0.0-rc.0",
   "dependencies": {
     "inversify": "^4.3.0",
     "lodash": "^4.17.5",
